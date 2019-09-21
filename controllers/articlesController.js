@@ -6,6 +6,7 @@ exports.list = (req, res, next) => {
   Article.find()
     .sort({'title': 'asc'})
     .limit(50)
+    .select('_id title published createdAt')
     .exec((err, articles) => {
       if (err) { 
         res.send(err);
